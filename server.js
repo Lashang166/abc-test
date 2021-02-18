@@ -24,7 +24,6 @@ app.use(session({
     saveUninitialized: true,
     cookie: { httpOnly: true, maxAge: 3600000 }
 }))
-
 passportConf(app)
 
 app.get("/check", (req, res) => {
@@ -45,6 +44,7 @@ app.post("/upload", cpUpload2 , (req, res) => {
 })
 
 app.use("/api/user", require('./routes/userRoute'))
+app.use("/api/product", require("./routes/productRoute") )
 
 app.listen(4000, () => {
     console.log("app is running");

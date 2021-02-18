@@ -8,7 +8,7 @@ import userActions from './store/actions/userActions'
 
 function App() {
   const dispatch = useDispatch()
-  const { isAuthenticated, loading } = useSelector(state => state.userState)
+  const { loading } = useSelector(state => state.userState)
 
   useEffect(() => {
     dispatch(userActions.auth())

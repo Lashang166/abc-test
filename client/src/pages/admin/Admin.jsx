@@ -9,14 +9,12 @@ const Admin = () => {
 
   const addHandler = (e) => {
       e.preventDefault()
-      const data = new FormData()
-      console.log(file);
-      data.append("photos", file)
-      data.append("a", title)
-      const a = ["x", "s"]
-      data.append("size", a)
+      const formElement = document.querySelector("form")
+      const data = new FormData(formElement)
 
-      axios.post("/upload", data)
+      console.log(data);
+
+      axios.post("/api/product/add", data)
         .then(res => {
             console.log(res);
         }).catch(err => console.log(err))
@@ -42,8 +40,8 @@ const Admin = () => {
                 <label>price :</label>
                 <input 
                     type="text" 
-                    name="title" 
-                    id="title" 
+                    name="price" 
+                    id="price" 
                 />
             </div>
             <div className="flex mt-1">
@@ -53,11 +51,53 @@ const Admin = () => {
                     name="photos" 
                     id="file" 
                     accept=".jpg"
-                   // multiple
+                    multiple
                     onChange={e => {
-                      const files = e.target.files[0]
+                      const files = e.target.files
+                      console.log(files)
                       setFile(files)
                     }}
+                />
+            </div>
+            <div className="flex mt-1">
+                <label>Size :</label>
+                <div className="flex items-center">
+                  <input type="checkbox" name="variation" value="S" />
+                  <label htmlFor="variiant" className="mr-1">S</label>
+                </div>
+                <div className="flex items-center">
+                  <input type="checkbox" name="variation" value="M" />
+                  <label htmlFor="variiant" className="mr-1">M</label>
+                </div>
+                <div className="flex items-center">
+                  <input type="checkbox" name="variation" value="L" />
+                  <label htmlFor="variiant" className="mr-1">L</label>
+                </div>
+                <div className="flex items-center">
+                  <input type="checkbox" name="variation" value="XL" />
+                  <label htmlFor="variiant" className="mr-1">XL</label>
+                </div>
+                <div className="flex items-center">
+                  <input type="checkbox" name="variation" value="XXL" />
+                  <label htmlFor="variiant" className="mr-1">XXL</label>
+                </div>
+            </div>
+            
+            <div className="felx mt-1">
+            <label>countInStock :</label>
+                <input 
+                    type="text" 
+                    name="countInStock" 
+                    id="countInStock" 
+                />
+            </div>
+
+            <div className="felx mt-1">
+            <label>description :</label>
+                <input 
+                    type="text" 
+                    name="description" 
+                    id="description" 
                 />
             </div>
             <div className="flex mt-1">
