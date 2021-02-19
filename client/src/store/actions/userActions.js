@@ -1,10 +1,10 @@
 import axios from 'axios'
-
+ 
 const userActions = {
     login: (username, password) => async (dispatch) => {
         dispatch({ type: "USER_LOGIN_REQUEST" })
         try {
-            const { data } = await axios.post("api/user/login", { username, password})
+            const { data } = await axios.post("/api/user/login", { username, password})
             console.log(data);
             dispatch({ type: "USER_LOGIN_SUCCESS", payload: data})
         } catch (error) {
@@ -15,7 +15,7 @@ const userActions = {
     auth: () => async (dispatch) => {
         dispatch({ type: "USER_AUTH_REQUEST"})
         try {
-            const {data} = await axios.get("api/user/authenticated")
+            const {data} = await axios.get("/api/user/authenticated")
             console.log(data);
             dispatch({ type: "USER_AUTH_SUCCESS", payload: data})
         } catch (error) {

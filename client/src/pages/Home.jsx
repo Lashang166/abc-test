@@ -9,12 +9,13 @@ const Home = () => {
     return (
         <div>
             <Header />
-            <img
+            {/* <img
                 src={"/assets//images/D_ChEFFWwAESBEB.jpg"}
                 alt="piture" 
                 width="250px"
-            />
-            <ul>
+            /> */}
+            <ul className="text-white">
+                <li><Link to="/shop">shop</Link></li>
                 <li><Link to="/admin/product">productManager</Link></li>
                 <li><Link to="/admin/category">categoryManager</Link></li>
                 <li><Link to="/admin/brand">brandManager</Link></li>

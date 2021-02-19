@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
 import productActions from '../../store/actions/productActions'
+import { Link } from 'react-router-dom'
 
+import { useDispatch, useSelector } from 'react-redux'
 
 const ProductManager = () => {
     const abortController = new AbortController()
     const signal  = abortController.signal
     const dispatch = useDispatch()
+    const { products, loading, message } = useSelector(state => state.productState)
+
     const [title, setTitle] = useState("")
     const [brand, setBrand] = useState("")
     const [file, setFile] = useState("")
     const [category, setCategory] = useState()
     const [add, setAdd] = useState(null)
     let [color, setColor] = useState("")
+
 
     useEffect(() => {
       fetch("/api/brand/", { signal: signal })
@@ -31,10 +35,16 @@ const ProductManager = () => {
       }).catch(err => {
               console.log(err)
           })
+      
+      if(products.length === 0){
+          dispatch(productActions.fetch())
+      }
+      
+
       return () => {
         abortController.abort()
       }
-    }, [])
+    }, [loading])
 
     useEffect(() => {
       if(add !== null){
@@ -56,10 +66,15 @@ const ProductManager = () => {
         
         
     }
+
+    const deleteItem = (id) => {
+
+    }
+
     return (
         <div>
-            <div className="mt-10 bg-gray-300 h-100vh p-7">
-        <div className="text-center">add product</div>
+          <div className="mt-10 bg-gray-300 h-100vh p-7">
+          <div className="text-center">add product</div>
 
         <form onSubmit={addHandler} className="flex flex-col">
             <div className="flex mt-1">
@@ -169,7 +184,18 @@ const ProductManager = () => {
             </div>
 
         </form>
-      </div>
+        
+            <h1 className="text-xl text-black text-center my-3">Products Lists</h1>
+            <ul className="">
+                { products.map((product) => ( 
+                    <li key={product._id} className="bg-white mt-1 p-1 flex justify-between">
+                        <Link to={`/product/${product._id}`}>{product.title}</Link>
+                        <button onClick={() => { dispatch(productActions.delete(product._id))  }}>delete</button>  
+                    </li>
+                ))}
+            </ul>
+
+          </div>
         </div>
     )
 }

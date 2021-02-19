@@ -17,11 +17,18 @@ app.use(cors())
 
 connectDB()
 
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header('Access-Control-Allow-Methods','POST, GET, PUT, PATCH, DELETE, OPTIONS')
+//     res.header('Access-Control-Allow-Headers','Content-Type, Option, Authorization')
+//     return next()
+//  })
+
 app.use(session({
-    name:'session',
+    name:'session5',
     secret: 'secret_code',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: { httpOnly: true, maxAge: 3600000 }
 }))
 passportConf(app)
@@ -35,13 +42,6 @@ app.get("/check", (req, res) => {
 const cpUpload = upload.fields([{ name: 'photos', maxCount: 1 }])
 const cpUpload2 = upload.single('photos')
 
-app.post("/upload", cpUpload2 , (req, res) => {
-    const t = req.body.photos
-    const {photos } = req
-    console.log(req.body);
-    //console.log(photos);
-    console.log(req.photos);
-})
 
 app.use("/api/user", require('./routes/userRoute'))
 app.use("/api/product", require("./routes/productRoute"))

@@ -19,14 +19,6 @@ const CategoryManager = () => {
             }).catch(err => {
                     console.log(err)
                 })
-        // axios.get("/api/category/",{ signal})
-        // .then(res => {
-        //     console.log(res.data)
-        //     setList(res.data)
-        //     setLoading(false)
-        // }).catch(err => {
-        //     console.log(err)
-        // })
 
         return () => {
             abortController.abort()
@@ -44,6 +36,16 @@ const CategoryManager = () => {
             })
     }
 
+    const onDelete = (id) => {
+        axios.delete(`/api/category/delete/${id}`)
+            .then(res => {
+                console.log(res.data)
+                setLoading(true)
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
     return (
         <div className="flex w-full mt-10 ">
             <div className=" w-2/4 bg-gray-300">
@@ -51,7 +53,7 @@ const CategoryManager = () => {
                 <ul className="mt-2">
                   
                      {  list.map((c,i) => (
-                            <li key={c._id} className="text-xl pl-2"> - {c.category}</li>
+                            <li key={c._id} onClick={() => onDelete(c._id)} className="text-xl pl-2"> - {c.category}</li>
                         ))
                        }
                 </ul>

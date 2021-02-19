@@ -12,6 +12,7 @@ function test(req, res, next){
 
 router.get("/", categoryController.show)
 router.post("/create", categoryController.create)
+router.delete("/delete/:id", categoryController.delete)
 
 
 
