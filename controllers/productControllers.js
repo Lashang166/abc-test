@@ -27,12 +27,11 @@ module.exports = {
                 category, 
                 brand, 
                 discount } = req.body;
-
-
-        // if(!title || !price || !colors || !variation || !countInStock || !category || !brand ){
-        //     res.status(200).json({ message: "please enter all field" , error: true})
-        // }
-        const product = await new Product({ title, price, colors, variation, countInStock, description, category, brand, discount, images: paths });
+                const colorsList = colors.split(',')
+                // if(!title || !price || !colors || !variation || !countInStock || !category || !brand ){
+                  //     res.status(200).json({ message: "please enter all field" , error: true})
+                  // }
+        const product = await new Product({ title, price, colors: colorsList , variation, countInStock, description, category, brand, discount, images: paths });
         product.save()
         res.status(201).json({ message: "successfuly created", product})
 
@@ -40,13 +39,13 @@ module.exports = {
         paths.forEach(p => fs.unlinkSync(p))
         res.status(403).json({ message: "You'er not admin", msgError: true });
       }
-   // } catch (error) {
-    //   paths.forEach(p => fs.unlinkSync(p))
-    //   res.status(500).json({
-    //     status: "fail",
-    //     message: error,
-    //   });
-    // } 
+  //  } catch (error) {
+  //     paths.forEach(p => fs.unlinkSync(p))
+  //     res.status(500).json({
+  //       status: "fail",
+  //       message: error,
+  //     });
+  //   } 
    },
 
 

@@ -21,7 +21,7 @@ app.use(session({
     name:'session',
     secret: 'secret_code',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { httpOnly: true, maxAge: 3600000 }
 }))
 passportConf(app)
@@ -44,7 +44,9 @@ app.post("/upload", cpUpload2 , (req, res) => {
 })
 
 app.use("/api/user", require('./routes/userRoute'))
-app.use("/api/product", require("./routes/productRoute") )
+app.use("/api/product", require("./routes/productRoute"))
+app.use("/api/category", require("./routes/categoryRoute"))
+app.use("/api/brand", require("./routes/brandRoute"))
 
 app.listen(4000, () => {
     console.log("app is running");
