@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 module.exports = {
     login: async (req, res) => {
         try {
-           // console.log(req.session);
+            console.log(req.session);
             if(req.isAuthenticated()){
                 const username = req.session.passport.user.username
                 const role = req.session.passport.user.role

@@ -32,7 +32,8 @@ const Header = () => {
             }
             <ul className="flex w-2/4 bg-red-400 justify-around">
                 <li><Link to="/">Home</Link> </li>
-                <li><Link to="/items">Items</Link> </li>
+                <li><Link to="/cart">Cart</Link></li>
+
             {
                 isAuthenticated ?
                  <li onClick={() => logoutHandle()}>Logout</li>

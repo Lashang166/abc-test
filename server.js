@@ -47,6 +47,9 @@ app.use("/api/user", require('./routes/userRoute'))
 app.use("/api/product", require("./routes/productRoute"))
 app.use("/api/category", require("./routes/categoryRoute"))
 app.use("/api/brand", require("./routes/brandRoute"))
+app.use('/api/order', require("./routes/orderRoute"))
+app.use('/api/payment', require("./routes/paymentRoute"))
+app.use('/api/express', require("./routes/expressRoute"))
 
 app.listen(4000, () => {
     console.log("app is running");

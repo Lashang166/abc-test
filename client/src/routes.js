@@ -7,6 +7,8 @@ import { Register } from './pages/Login'
 import Admin from './pages/admin/Admin'
 import Shop from './pages/Shop'
 import Product from './pages/Product'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 
 const Routes = () => {
     return (
@@ -17,6 +19,8 @@ const Routes = () => {
             <Route path="/admin" component={Admin} />
             <Route path="/shop" exact component={Shop} />
             <Route path="/shop/product/:id" component={Product} />
+            <Route path="/cart" exact component={Cart} />
+            <Route path="/cart/checkout" component={Checkout} />
         </Switch>
     )
 }
