@@ -18,7 +18,10 @@ const Home = () => {
                 <li><Link to="/shop">shop</Link></li>
                 <li><Link to="/admin/product">productManager</Link></li>
                 <li><Link to="/admin/category">categoryManager</Link></li>
-                <li><Link to="/admin/brand">brandManager</Link></li>
+                <li><Link to="/admin/brand">brandManager</Link></li>     
+                <li><Link to="/admin/express">expressManager</Link></li>      
+                <li><Link to="/admin/payment">paymentManager</Link></li>       
+                <li><Link to="/admin/orders">ordersManager</Link></li>       
             </ul>
         </div>
     )

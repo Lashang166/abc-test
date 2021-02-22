@@ -72,11 +72,13 @@ const Product = (props) => {
           <p>rating : {product.rating.length}</p>
           {product.images.map((m, i) => (
             <img
-              src={`/assets//images/${m.substr(m.indexOf("f"), m.length + 1)}`}
+
+              src={`/assets//images/${m.substr(m.indexOf("file"), m.length + 1)}`}
               key={i}
               alt="1"
               width="180px"
             />
+
           ))}
           <div className="flex  mt-2">
             <button 

@@ -19,7 +19,7 @@ const Shop = () => {
             <h1 className="text-xl text-white text-center my-3">Products Lists</h1>
             <ul className="">
                 { products.map((product) => ( 
-                    <li key={product.key} className="bg-white mt-1 p-1">
+                    <li key={product._id} className="bg-white mt-1 p-1">
                         <Link to={`/shop/product/${product._id}`}>{product.title}</Link>  
                     </li>
                 ))}

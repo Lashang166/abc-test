@@ -32,6 +32,18 @@ module.exports = {
         }else{
             res.status(401).json({ message: "Unauthorize"})
         }
+    },
+    fetch: async (req, res) => {
+        if(req.user.role === "admin"){
+            const orders = await Orders.find({})
+            res.status(200).json({ orders })
+
+        }else{
+            res.status(401).json({ message: "Unauthorize"})
+        }
+    },
+    getById: async (req, res) => {
+        //const order = await Orders.find({})
     }
     
 }

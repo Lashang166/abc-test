@@ -21,6 +21,7 @@ const Routes = () => {
             <Route path="/shop/product/:id" component={Product} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/cart/checkout" component={Checkout} />
+            
         </Switch>
     )
 }

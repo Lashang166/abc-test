@@ -32,5 +32,24 @@ module.exports = {
                 message: error
             })    
         }
+    },
+    delete: async (req, res) => {
+        try {
+            if(req.user.role === "admin"){
+              const payment = await Payment.findByIdAndDelete({ _id: req.params.id })
+              res.status(202).json({
+                    message: "category successfully deleted",
+                    payment
+                })
+            }else{
+                res.status(403).json({message: { msgBody: "You'er not admin", msgError: true}})
+
+            }
+        } catch (error) {
+            res.status(500).json({
+                status: 'fail',
+                message: error
+            })   
+        }
     }
 }

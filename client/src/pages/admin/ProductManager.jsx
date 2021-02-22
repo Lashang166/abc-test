@@ -8,6 +8,7 @@ const ProductManager = () => {
     const abortController = new AbortController()
     const signal  = abortController.signal
     const dispatch = useDispatch()
+    //const [loading, setLoading] = useState(true)
     const { products, loading, message } = useSelector(state => state.productState)
 
     const [title, setTitle] = useState("")
@@ -189,7 +190,7 @@ const ProductManager = () => {
             <ul className="">
                 { products.map((product) => ( 
                     <li key={product._id} className="bg-white mt-1 p-1 flex justify-between">
-                        <Link to={`/product/${product._id}`}>{product.title}</Link>
+                        <Link to={`/shop/product/${product._id}`}>{product.title}</Link>
                         <button onClick={() => { dispatch(productActions.delete(product._id))  }}>delete</button>  
                     </li>
                 ))}

@@ -6,6 +6,7 @@ const ExrpessController = require('../controllers/expressController')
 
 router.post("/add", ExrpessController.add)
 router.get("/get", expressController.get)
+router.delete('/delete/:id', expressController.delete)
 
 
 
