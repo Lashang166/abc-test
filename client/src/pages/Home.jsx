@@ -22,6 +22,7 @@ const Home = () => {
                 <li><Link to="/admin/express">expressManager</Link></li>      
                 <li><Link to="/admin/payment">paymentManager</Link></li>       
                 <li><Link to="/admin/orders">ordersManager</Link></li>       
+                <li><Link to="/user/orders">Myorders</Link></li>       
             </ul>
         </div>
     )

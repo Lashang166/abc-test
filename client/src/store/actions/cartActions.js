@@ -36,15 +36,17 @@ export default {
         cartItems.map(item => {
             let i = {
                 productId: item.product_Id,
-                productCount: item.qty
+                productCount: item.qty,
+                productSize: item.size,
+                productColor: item.color
             }
             items.push(i)
         })
-
+        console.log(items);
         dispatch({ type: "CART_ADD_REQUEST" })
         const { data } = await axios.post("/api/order/add", { items, address, payment, express, totalPrice })
         console.log(data);
 
-        //dispatch({ type: "CART_CHECK_OUT", payload: items, address, payment, express, totalPrice})
+        dispatch({ type: "CART_CHECK_OUT", payload: items, address, payment, express, totalPrice})
     }
 }

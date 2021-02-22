@@ -21,6 +21,7 @@ const ProductSchema = new mongoose.Schema({
     brand: {
         type: mongoose.Schema.Types.ObjectId, ref: "Brand"
     },
+    soldCount: Number,
     discount: Number,
 }, {timestamps: true})
 

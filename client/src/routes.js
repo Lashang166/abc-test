@@ -9,6 +9,7 @@ import Shop from './pages/Shop'
 import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import UserOrder from './pages/UserOrder'
 
 const Routes = () => {
     return (
@@ -21,6 +22,7 @@ const Routes = () => {
             <Route path="/shop/product/:id" component={Product} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/cart/checkout" component={Checkout} />
+            <Route path="/user/orders" component={UserOrder} />
             
         </Switch>
     )

@@ -1,4 +1,5 @@
 const Orders = require("../models/orderModel")
+const Product = require("../models/productModel")
 
 
 
@@ -19,6 +20,11 @@ module.exports = {
                 payment
             })
 
+            items.map(async (item) => {
+                let qty = item.productCount;
+                const product = await Product.findByIdAndUpdate({_id: item.productId}, { $inc: { soldCount: qty, countInStock: -qty  }})
+            })
+
             order.save()
             res.status(200).json({ message: "success", order})
         }else{
@@ -27,7 +33,7 @@ module.exports = {
     },
     get: async (req, res) => {
         if(req.isAuthenticated()) {
-            const order = await Orders.find({userId: req.user._id}).populate("express payment items.productId", "name name title price")
+            const order = await Orders.find({userId: req.user._id}).populate("express payment items.productId userId", "name name title username")
             res.status(200).json({ order})
         }else{
             res.status(401).json({ message: "Unauthorize"})
