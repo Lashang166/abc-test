@@ -22,8 +22,8 @@ module.exports = function (app) {
         new GoogleStrategy({
             // options for google strategy
             callbackURL: "/api/auth/google/redirect",
-            clientID: googleKey.google.clientID,
-            clientSecret: googleKey.google.clientSecret,
+            clientID: process.env.clientID,
+            clientSecret: process.env.clientSecret,
             proxy: true
     
         }, async (accessToken, refreshToken, profile, done) => {

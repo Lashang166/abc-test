@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
+const db = process.env.MONGODB_URL
 
 
-
-module.exports = function() {
+module.exports = function() {  
     mongoose
-        .connect("mongodb://127.0.0.1:27017/Laz",
+        .connect(process.env.MONGODB_URL,
             { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true})
         .then(() => {
             console.log("conenct to db");

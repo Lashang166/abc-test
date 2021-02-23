@@ -4,7 +4,7 @@ const connectDB = require("./config/db")
 const passportConf = require("./config/passport")
 const cookieParser = require("cookie-parser")
 const cors = require('cors')
-
+require('dotenv').config();
 const multer = require('multer')
 
 const upload = multer()
@@ -51,7 +51,17 @@ app.use('/api/order', require("./routes/orderRoute"))
 app.use('/api/payment', require("./routes/paymentRoute"))
 app.use('/api/express', require("./routes/expressRoute"))
 
-app.listen(4000, () => {
-    console.log("app is running");
+
+if(process.env.NODE_ENV=="production"){
+    app.use(express.static("client/build"))
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    })
+}
+
+const PORT = process.env.PORT
+
+app.listen(PORT, () => {
+    console.log("app is running", PORT);
 })
 
