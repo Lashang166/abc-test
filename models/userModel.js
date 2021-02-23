@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        //required: true
     },
     email: {
         type: String,
@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
         require: true,
         default: "user"
     },
+    thumbnail: {
+        type: String
+    },
+    googleId: String
 })
 
 UserSchema.pre("save", function(next) {

@@ -42,7 +42,7 @@ app.get("/check", (req, res) => {
 const cpUpload = upload.fields([{ name: 'photos', maxCount: 1 }])
 const cpUpload2 = upload.single('photos')
 
-
+app.use("/api/auth", require('./routes/authRoute'))
 app.use("/api/user", require('./routes/userRoute'))
 app.use("/api/product", require("./routes/productRoute"))
 app.use("/api/category", require("./routes/categoryRoute"))

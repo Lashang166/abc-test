@@ -47,9 +47,10 @@ const Login = () => {
                         id="password"
                         onChange={(e) => setPassword(e.target.value)} /><br/> <br/>
                         <button  className="bg-blue-400 p-2">Login</button>
+               <a href="/api/auth/google" className="text-red-500">Google +</a>
                 </form>
 
-               <Link to="/register" className="text-white">Register</Link>
+               <Link to="/register" className="text-white">Register</Link> <br />
             </div>
         </div>
     )
@@ -110,6 +111,8 @@ export const Register = () => {
                         <button className="bg-blue-400 p-2">Register</button>
                 </form>
                 <Link to="/login" className="text-white">Login</Link>
+                <a href="/api/auth/google" className="text-white">Google +</a>
+
 
             </div>
         </div>
